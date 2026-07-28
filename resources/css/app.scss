@@ -1,0 +1,652 @@
+/*
+|--------------------------------------------------------------------------
+| RS UMMI Landing Page — Design System
+|--------------------------------------------------------------------------
+|
+| Custom SCSS yang mengimpor Bootstrap 5 dan mendefinisikan:
+| - Color Palette (Navy, Blue, Cyan)
+| - Typography (Poppins)
+| - Component Styles (Navbar, Hero, Profile, Doctors, Footer)
+| - Responsive Adjustments (Mobile-First)
+| - Hover Effects & Transitions
+|
+*/
+
+// ─── CUSTOM VARIABLES ──────────────────────────────────────────────────────────
+
+// Color Palette RS UMMI
+$navy:          #0F3066;
+$navy-dark:     #0A1F42;
+$blue:          #0087BC;
+$blue-light:    #56C5F1;
+$blue-pale:     #DCF5FF;
+$blue-ice:      #EBF9FF;
+$white:         #FFFFFF;
+$dark-text:     #1E1E1E;
+$body-text:     #333333;
+$gray-text:     #515151;
+$gray-muted:    #828283;
+
+// Override Bootstrap primary colors
+$primary:       $navy;
+$secondary:     $blue;
+$info:          $blue-light;
+
+// Typography
+$font-family-sans-serif: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+// Border radius
+$border-radius:    0.5rem;
+$border-radius-lg: 1rem;
+$border-radius-xl: 1.25rem;
+
+// ─── BOOTSTRAP IMPORT ───────────────────────────────────────────────────────────
+
+@import "bootstrap/scss/bootstrap";
+
+// ─── GLOBAL STYLES ──────────────────────────────────────────────────────────────
+
+body {
+    font-family: $font-family-sans-serif;
+    color: $body-text;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// Utility: accent color for headings
+.text-accent {
+    color: $blue !important;
+}
+
+// Smooth scrolling
+html {
+    scroll-behavior: smooth;
+}
+
+// Section shared styles
+.section-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: $blue;
+    padding: 0.35rem 1rem;
+    background-color: $blue-pale;
+    border-radius: 2rem;
+}
+
+.section-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: $navy;
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: $gray-text;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-divider {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, $blue, $blue-light);
+    border-radius: 2px;
+    margin-top: 0.75rem;
+}
+
+// ─── 1. NAVBAR ──────────────────────────────────────────────────────────────────
+
+.navbar-custom {
+    background-color: $white;
+    padding: 0.75rem 0;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    z-index: 1030;
+
+    .navbar-logo {
+        max-width: 200px;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    .nav-link {
+        font-weight: 500;
+        font-size: 0.95rem;
+        color: $navy;
+        padding: 0.5rem 0.25rem;
+        position: relative;
+        transition: color 0.3s ease;
+
+        &:hover,
+        &.active {
+            color: $blue;
+        }
+
+        // Underline effect on hover
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: $blue;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        &:hover::after,
+        &.active::after {
+            width: 100%;
+            left: 0;
+        }
+    }
+
+    // Dropdown styling
+    .dropdown-menu-custom {
+        border: none;
+        box-shadow: 0 10px 40px rgba($navy, 0.12);
+        border-radius: $border-radius;
+        padding: 0.5rem 0;
+        margin-top: 0.5rem;
+
+        .dropdown-item {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: $navy;
+            padding: 0.6rem 1.25rem;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background-color: $blue-ice;
+                color: $blue;
+                padding-left: 1.5rem;
+            }
+        }
+    }
+
+    // Hamburger toggler
+    .navbar-toggler {
+        color: $navy;
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+// Scrolled state — shadow appears
+.navbar-scrolled {
+    box-shadow: 0 4px 20px rgba($navy, 0.08) !important;
+    background-color: rgba($white, 0.98) !important;
+    backdrop-filter: blur(8px);
+}
+
+// ─── 2. HERO BANNER ─────────────────────────────────────────────────────────────
+
+.hero-section {
+    position: relative;
+    min-height: 580px;
+    background-image: url('/images/hero-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba($navy-dark, 0.88) 0%,
+        rgba($navy, 0.75) 50%,
+        rgba($blue, 0.55) 100%
+    );
+    z-index: 0;
+}
+
+.hero-welcome-badge {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: $blue-light;
+    background-color: rgba($blue-light, 0.12);
+    padding: 0.5rem 1.25rem;
+    border-radius: 2rem;
+    border: 1px solid rgba($blue-light, 0.25);
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: $white;
+    line-height: 1.15;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero-title-accent {
+    color: $blue-light;
+}
+
+.hero-tagline {
+    font-size: 1.35rem;
+    font-weight: 500;
+    font-style: italic;
+    color: rgba($white, 0.9);
+}
+
+.hero-description {
+    font-size: 1rem;
+    color: rgba($white, 0.8);
+    max-width: 540px;
+    line-height: 1.65;
+}
+
+// CTA Buttons
+.btn-cta {
+    background: linear-gradient(135deg, $blue, $blue-light);
+    color: $white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: $border-radius-xl;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba($blue, 0.35);
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba($blue, 0.45);
+        color: $white;
+        background: linear-gradient(135deg, darken($blue, 5%), $blue-light);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+.btn-cta-outline {
+    background: transparent;
+    color: $white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
+    border: 2px solid rgba($white, 0.5);
+    border-radius: $border-radius-xl;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: rgba($white, 0.1);
+        border-color: $white;
+        color: $white;
+        transform: translateY(-2px);
+    }
+}
+
+// Hero responsive
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 420px;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-tagline {
+        font-size: 1.1rem;
+    }
+    .hero-description {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section {
+        min-height: 360px;
+    }
+    .hero-title {
+        font-size: 1.65rem;
+    }
+    .btn-cta, .btn-cta-outline {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+// ─── 3. PROFIL SINGKAT ──────────────────────────────────────────────────────────
+
+.profile-section {
+    background-color: $white;
+}
+
+.profile-image-wrapper {
+    position: relative;
+    display: inline-block;
+
+    .profile-image {
+        border-radius: $border-radius-xl;
+        max-width: 100%;
+        box-shadow: 0 10px 40px rgba($navy, 0.1);
+    }
+
+    .profile-image-accent {
+        position: absolute;
+        bottom: -12px;
+        right: -12px;
+        width: 100%;
+        height: 100%;
+        border: 3px solid $blue-light;
+        border-radius: $border-radius-xl;
+        z-index: -1;
+    }
+}
+
+.profile-welcome-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: $blue;
+}
+
+.profile-tagline {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: $navy;
+}
+
+.profile-description {
+    font-size: 0.95rem;
+    color: $body-text;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+.profile-values-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $navy;
+}
+
+.badge-value {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: $blue;
+    background-color: $blue-pale;
+    border-radius: 2rem;
+    border: 1px solid rgba($blue, 0.15);
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: $blue;
+        color: $white;
+        transform: translateY(-1px);
+    }
+}
+
+// Visi & Misi Cards
+.visi-misi-card {
+    padding: 2rem;
+    border-radius: $border-radius-xl;
+    background-color: $blue-ice;
+    border: 1px solid rgba($blue, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba($navy, 0.08);
+    }
+}
+
+.visi-misi-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, $navy, $blue);
+    border-radius: 12px;
+    color: $white;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.visi-misi-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $navy;
+}
+
+.visi-misi-divider {
+    width: 50px;
+    height: 4px;
+    background: linear-gradient(90deg, $blue-light, $blue);
+    border-radius: 2px;
+    margin: 0.75rem 0 1rem;
+}
+
+.visi-misi-content {
+    font-size: 1.1rem;
+    color: $body-text;
+    line-height: 1.6;
+}
+
+.misi-list {
+    padding-left: 1.25rem;
+    margin: 0;
+
+    li {
+        font-size: 0.95rem;
+        color: $body-text;
+        line-height: 1.65;
+        padding: 0.35rem 0;
+        position: relative;
+
+        &::marker {
+            color: $blue;
+            font-weight: 700;
+        }
+    }
+}
+
+// Profile responsive
+@media (max-width: 768px) {
+    .profile-tagline {
+        font-size: 1.35rem;
+    }
+    .section-title {
+        font-size: 1.75rem;
+    }
+    .profile-image-wrapper .profile-image-accent {
+        display: none;
+    }
+}
+
+// ─── 4. DAFTAR DOKTER ───────────────────────────────────────────────────────────
+
+.doctors-section {
+    background-color: $blue-ice;
+}
+
+.doctor-card {
+    border-radius: $border-radius-xl;
+    overflow: hidden;
+    background-color: $white;
+    box-shadow: 0 4px 15px rgba($navy, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba($navy, 0.12);
+    }
+}
+
+.doctor-photo-wrapper {
+    overflow: hidden;
+    height: 240px;
+    background-color: $blue-pale;
+}
+
+.doctor-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+
+    .doctor-card:hover & {
+        transform: scale(1.05);
+    }
+}
+
+.doctor-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, $blue-pale, $blue-ice);
+    color: rgba($navy, 0.2);
+    font-size: 5rem;
+}
+
+.doctor-name {
+    font-weight: 500;
+    font-size: 1rem;
+    color: $navy;
+    line-height: 1.35;
+}
+
+.doctor-specialization {
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $blue;
+}
+
+.doctor-card-footer {
+    background-color: $navy;
+    height: 6px;
+    padding: 0;
+    transition: height 0.3s ease;
+
+    .doctor-card:hover & {
+        height: 8px;
+        background: linear-gradient(90deg, $navy, $blue);
+    }
+}
+
+// ─── 5. FOOTER ──────────────────────────────────────────────────────────────────
+
+.footer-section {
+    background-color: $navy-dark;
+    color: rgba($white, 0.85);
+}
+
+.footer-main {
+    border-bottom: 1px solid rgba($white, 0.08);
+}
+
+.footer-logo {
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+
+.footer-description {
+    font-size: 0.9rem;
+    color: rgba($white, 0.65);
+    line-height: 1.65;
+}
+
+.footer-heading {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: $white;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba($blue-light, 0.3);
+}
+
+.footer-schedule {
+    li {
+        padding: 0.6rem 0;
+        font-size: 0.9rem;
+        border-bottom: 1px solid rgba($white, 0.06);
+        color: rgba($white, 0.7);
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
+.schedule-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.65rem;
+    border-radius: 1rem;
+    background-color: rgba($white, 0.08);
+    color: rgba($white, 0.75);
+}
+
+.badge-24h {
+    background-color: rgba($blue-light, 0.15);
+    color: $blue-light;
+}
+
+.footer-contact {
+    li {
+        padding: 0.55rem 0;
+        font-size: 0.9rem;
+        color: rgba($white, 0.7);
+        line-height: 1.5;
+    }
+}
+
+.footer-link {
+    color: $blue-light;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: $white;
+        text-decoration: underline;
+    }
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba($white, 0.08);
+    color: rgba($white, 0.75);
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: $blue;
+        color: $white;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba($blue, 0.35);
+    }
+}
+
+.footer-bottom {
+    background-color: darken($navy-dark, 3%);
+    color: rgba($white, 0.5);
+    font-size: 0.85rem;
+}
+
+// Footer responsive
+@media (max-width: 768px) {
+    .footer-heading {
+        margin-top: 0.5rem;
+    }
+}
