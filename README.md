@@ -79,7 +79,7 @@ php artisan serve
 
 Kunjungi: **http://localhost:8000**
 
-## 📦 Aset Gambar
+## Aset Gambar
 
 Sebelum menjalankan, pastikan file gambar berikut sudah ada di `public/images/`:
 
@@ -95,7 +95,7 @@ Sebelum menjalankan, pastikan file gambar berikut sudah ada di `public/images/`:
 4. **Profil Banner** → Download dari: `https://rsummi.co.id/assets/images/profile-banner.png`
    - Simpan sebagai: `public/images/profile-banner.png`
 
-## 🎨 Palet Warna
+## Palet Warna
 
 | Warna | Hex | Penggunaan |
 |---|---|---|
