@@ -17,7 +17,7 @@ Landing Page Rumah Sakit UMMI Bogor yang dibangun menggunakan **Laravel Blade + 
 ## Struktur Proyek
 
 ```
-RS ICOD/
+MiniProjectRSUMMIBogor/
 ├── resources/
 │   ├── views/
 │   │   ├── layouts/
