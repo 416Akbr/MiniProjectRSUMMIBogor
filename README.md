@@ -56,7 +56,7 @@ Pastikan sudah terinstal:
 
 ```bash
 # 1. Clone/masuk ke folder proyek
-cd "RS ICOD"
+cd "MiniProjectRSUMMIBogor"
 
 # 2. Install dependensi PHP
 composer install
