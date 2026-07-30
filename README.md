@@ -2,7 +2,7 @@
 
 Landing Page Rumah Sakit UMMI Bogor yang dibangun menggunakan **Laravel Blade + Alpine.js + Bootstrap 5**.
 
-## 📋 Spesifikasi
+## Spesifikasi
 
 | Komponen | Teknologi |
 |---|---|
@@ -14,7 +14,7 @@ Landing Page Rumah Sakit UMMI Bogor yang dibangun menggunakan **Laravel Blade + 
 | Font | Poppins (Google Fonts) |
 | Icons | Bootstrap Icons |
 
-## 🏗️ Struktur Proyek
+## Struktur Proyek
 
 ```
 RS ICOD/
@@ -41,7 +41,7 @@ RS ICOD/
 └── vite.config.js                      ← Konfigurasi build
 ```
 
-## 🚀 Cara Menjalankan
+## Cara Menjalankan
 
 ### Prasyarat
 
@@ -50,7 +50,7 @@ Pastikan sudah terinstal:
 - **Composer** — [Download](https://getcomposer.org/download/)
 - **Node.js 18+** — [Download](https://nodejs.org/)
 
-> 💡 **Rekomendasi:** Gunakan [Laragon](https://laragon.org/download/) untuk instalasi all-in-one di Windows.
+> **Rekomendasi:** Gunakan [Laragon](https://laragon.org/download/) untuk instalasi all-in-one di Windows.
 
 ### Langkah Setup
 
@@ -105,13 +105,11 @@ Sebelum menjalankan, pastikan file gambar berikut sudah ada di `public/images/`:
 | Ice Blue | `#EBF9FF` | Background section |
 | Pale Blue | `#DCF5FF` | Badge, card background |
 
-## 📱 Fitur Responsif
+Tampilan Responsif
+Layout aplikasi sudah disesuaikan agar rapi di berbagai ukuran layar:
+1. Desktop (≥992px): Menggunakan menu horizontal penuh dengan tampilan grid 4 kolom untuk daftar dokter.
+2. Tablet (577–991px): Navigasi berubah menjadi hamburger menu dengan grid 2 kolom untuk dokter.
+3. Mobile (≤576px): Menggunakan hamburger menu dengan tampilan memanjang (1 kolom) untuk daftar dokter.
 
-- **Desktop (≥992px):** Menu horizontal penuh, grid 4 kolom dokter
-- **Tablet (577–991px):** Hamburger menu, grid 2 kolom dokter
-- **Mobile (≤576px):** Hamburger menu, grid 1 kolom dokter
-
-## 👨‍💻 Dibuat Untuk
-
-**Mini Project: Redesign Landing Page RS UMMI**
-Evaluasi Teknis — Posisi Frontend Developer
+Tentang Project
+Project ini merupakan Mini Project: Redesign Landing Page RS UMMI. Dibuat secara khusus untuk memenuhi tahap evaluasi teknis pada posisi Frontend Developer.
